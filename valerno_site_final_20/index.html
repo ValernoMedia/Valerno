@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABmElEQVR4nGPk5eFioCVgoqnpoxaMWkAVwILGFxVgmZYrgyZ44e731mUv4dxoZ8EAK34I+97zX+VznuGxgBFrRot1EfSzhBqx8sCHNYc/oClgZ2WcXSQ7f+e7/Re+4PcB9iDacx6hzcmAhxFDgbUON8N/hmNXv+I3HacFz9/+vvboB4QtKsCiq8SJpsDFkPfI1a8/f/8n0wIGBoa95xCecDbkQZaSE2NTlWbfc+4zQdPxWXD8+tevP/5B2GbqXLycCJXOhjwPXvy69/wXRRb8/vP/8GWoJ1iYGe31oJ5gZWa00+XZc54o5+OzgAEtqg15IQxzTS42VsbDlwlHL2ELHr78defZTwhbVpRVTZqdgYHBxYj3+LWv337+o4IFDAwMe88jRzWvhBCrljzHnnME0j4JFhy58vXHL6hjrbS5fMz5nr35fePxD6pZ8OPXv2NXv0HYHGxM7ia8e4mOXqIsYGBgQDbxz9//By8RG73EWnDr6c9Hr6BJ/vTNb5++/aWyBQxIUY0c50QC7KUpFcHQr9FGLRi1gHIAALk3izUD8gfkAAAAAElFTkSuQmCC"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jjvusqi5USHaFoO63D7NuMb4Xz1Q9yDgHr5e-ocO5Bo" />
+<title>Valerno Media — Content Marketing for Home Service Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f9f5ee;
+    --dark: #0f0e0c;
+    --warm: #1c1a16;
+    --gold: #b8892a;
+    --rust: #c4622d;
+    --muted: #9a8f82;
+    --border: #e2dcd2;
+    --light: #f2ece0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--dark); font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(249,245,238,0.94); backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; }
+  .logo span { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-right a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
+  .nav-right a:hover { color: var(--dark); }
+  .nav-btn { background: var(--dark) !important; color: var(--cream) !important; padding: 12px 26px !important; font-weight: 500 !important; letter-spacing: 1.5px !important; transition: background .2s !important; }
+  .nav-btn:hover { background: var(--gold) !important; color: white !important; }
+
+  /* HERO — full width, centered, big text, warm bg */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 40px 100px;
+    position: relative; overflow: hidden;
+  }
+
+  /* texture lines */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+    pointer-events: none;
+  }
+
+  .hero-top {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 48px;
+    animation: up .7s .1s both;
+  }
+  @keyframes up { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+  .hero-line-left { width: 48px; height: 1px; background: var(--gold); }
+  .hero-eyebrow { font-family: 'DM Mono'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(58px, 9vw, 128px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -1px;
+    color: var(--cream);
+    margin-bottom: 0;
+    animation: up .7s .2s both;
+  }
+  .hero h1 .italic { font-style: italic; color: var(--gold); display: block; line-height: 1.1; }
+  .hero h1 .small { font-size: clamp(16px, 2vw, 24px); font-weight: 300; color: rgba(249,245,238,0.35); letter-spacing: 3px; text-transform: uppercase; display: block; margin-top: 28px; font-style: normal; font-family: 'DM Mono', monospace; }
+
+  .hero-divider { width: 1px; height: 72px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 52px auto; animation: up .7s .3s both; }
+
+  .hero-sub {
+    font-size: 16px; color: rgba(249,245,238,0.45);
+    max-width: 400px; line-height: 2; font-weight: 300;
+    margin-bottom: 48px; animation: up .7s .4s both;
+    letter-spacing: 0.2px;
+  }
+
+  .hero-buttons { display: flex; gap: 16px; align-items: center; animation: up .7s .5s both; }
+  .btn-cream { display: inline-block; background: var(--cream); color: var(--dark); padding: 16px 40px; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all .2s; }
+  .btn-cream:hover { background: var(--gold); color: white; }
+  .btn-border { display: inline-block; border: 1px solid rgba(249,245,238,0.2); color: rgba(249,245,238,0.5); padding: 16px 32px; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .2s; }
+  .btn-border:hover { border-color: var(--cream); color: var(--cream); }
+
+  /* TICKER */
+  .ticker { background: var(--gold); padding: 14px 0; overflow: hidden; }
+  .ticker-inner { display: flex; gap: 48px; animation: tick 18s linear infinite; white-space: nowrap; }
+  @keyframes tick { from{transform:translateX(0);}to{transform:translateX(-50%);} }
+  .ticker-item { font-family: 'DM Mono'; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.7); display: flex; align-items: center; gap: 24px; }
+  .ticker-item::after { content: '✦'; font-size: 8px; }
+
+  /* SECTION */
+  section { padding: 110px 56px; }
+  .inner { max-width: 1100px; margin: 0 auto; }
+  .label { font-family: 'DM Mono'; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 5vw, 70px); font-weight: 300; line-height: 1.08; margin-bottom: 16px; }
+  h2 em { font-style: italic; color: var(--gold); }
+  .sub { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.9; max-width: 420px; margin-bottom: 60px; }
+
+  /* WHAT WE DO */
+  .what { background: var(--light); }
+  .what-list { border-top: 1px solid var(--border); }
+  .what-item {
+    display: grid; grid-template-columns: 80px 1fr 1.4fr;
+    align-items: center; gap: 48px;
+    padding: 40px 0; border-bottom: 1px solid var(--border);
+    transition: all .2s; cursor: default;
+  }
+  .what-item:hover { background: var(--cream); padding-left: 24px; padding-right: 24px; border-radius: 2px; }
+  .wi-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--border); }
+  .wi-title { font-size: 20px; font-weight: 500; }
+  .wi-text { font-size: 13px; color: var(--muted); line-height: 1.8; font-weight: 300; }
+
+  /* PACKAGES */
+  .pkg-section { background: var(--dark); }
+  .pkg-section h2 { color: var(--cream); }
+  .pkg-section .sub { color: rgba(249,245,238,0.35); }
+  .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); }
+  .pkg { background: var(--warm); padding: 48px 36px; position: relative; transition: background .2s; display: flex; flex-direction: column; }
+  .pkg:hover { background: #211f1a; }
+  .pkg.hot { background: var(--gold); }
+  .pkg.hot:hover { background: #a87a24; }
+  .hot-tag { position: absolute; top: 20px; right: 20px; font-family: 'DM Mono'; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.5); background: rgba(0,0,0,0.1); padding: 4px 10px; }
+  .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--cream); margin-bottom: 20px; }
+  .pkg.hot .pkg-name { color: #000; }
+  .pkg-price { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: var(--cream); line-height: 1; }
+  .pkg.hot .pkg-price { color: #000; }
+  .pkg-mo { font-size: 12px; color: rgba(249,245,238,0.35); margin-bottom: 32px; margin-top: 4px; }
+  .pkg.hot .pkg-mo { color: rgba(0,0,0,0.4); }
+  .pkg-line { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 24px; }
+  .pkg.hot .pkg-line { background: rgba(0,0,0,0.12); }
+  .pkg ul { list-style: none; flex: 1; }
+  .pkg ul li { font-size: 13px; color: rgba(249,245,238,0.55); padding: 6px 0; display: flex; gap: 10px; font-weight: 300; }
+  .pkg.hot ul li { color: rgba(0,0,0,0.7); }
+  .pkg ul li::before { content: '—'; flex-shrink: 0; opacity: .4; }
+  .pkg-cta { display: block; margin-top: 40px; padding: 14px; text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.4); transition: all .2s; }
+  .pkg-cta:hover { border-color: var(--cream); color: var(--cream); }
+  .pkg.hot .pkg-cta { border-color: rgba(0,0,0,0.2); color: rgba(0,0,0,0.6); }
+  .pkg.hot .pkg-cta:hover { border-color: #000; color: #000; }
+
+  /* HOW */
+  .how { background: var(--cream); }
+  .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
+  .how-item { border-top: 2px solid var(--border); padding-top: 28px; }
+  .how-item.active { border-color: var(--gold); }
+  .how-n { font-family: 'DM Mono'; font-size: 11px; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
+  .how-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .how-text { font-size: 13px; color: var(--muted); line-height: 1.8; font-weight: 300; }
+
+  /* CONTACT */
+  .contact-bg { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+  .contact-left p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 36px; font-weight: 300; }
+  .contact-touch { margin-bottom: 12px; }
+  .ct-label { font-family: 'DM Mono'; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .ct-val a { color: var(--dark); text-decoration: none; font-size: 15px; font-weight: 500; }
+  .ct-val a:hover { color: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fg { margin-bottom: 12px; }
+  .fg label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+  .fg input, .fg select, .fg textarea { width: 100%; padding: 13px 16px; background: white; border: 1px solid var(--border); font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--dark); outline: none; transition: border-color .2s; appearance: none; }
+  .fg textarea { height: 90px; resize: none; }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
+  .submit { width: 100%; padding: 16px; background: var(--dark); color: var(--cream); border: none; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; transition: background .2s; margin-top: 4px; }
+  .submit:hover { background: var(--gold); }
+
+  footer { background: var(--dark); padding: 36px 60px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06); }
+  .f-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); }
+  .f-logo span { color: var(--gold); }
+  .f-right { font-family: 'DM Mono'; font-size: 11px; color: rgba(249,245,238,0.22); letter-spacing: 1px; }
+  .f-tag { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: rgba(249,245,238,0.22); }
+  /* ── MOBILE ── */
+  /* ── MOBILE ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 300; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); background: var(--cream); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); background: var(--cream); }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hamburger { display: flex !important; }
+    .nav-right { display: none; }
+    .nav-right.open {
+      display: flex; flex-direction: column; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--dark); align-items: center; justify-content: center;
+      gap: 36px; z-index: 200;
+    }
+    .nav-right.open a { font-size: 18px; letter-spacing: 3px; color: var(--cream); text-decoration: none; }
+    .nav-right.open .nav-btn { background: var(--gold) !important; color: #000 !important; padding: 16px 40px !important; font-size: 13px !important; letter-spacing: 2px !important; }
+    .hero { padding: 100px 24px 60px; text-align: center; }
+    .hero h1 { font-size: clamp(40px, 10vw, 60px); }
+    .hero-sub { font-size: 15px; margin: 0 auto 40px; }
+    .hero-buttons { flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+    .btn-cream, .btn-border { width: 100%; text-align: center; padding: 16px; box-sizing: border-box; }
+    .hero-top { justify-content: center; }
+    .hero-divider { margin: 36px auto; }
+    .what-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 28px 0; }
+    .what-item:hover { background: none; padding-left: 0; padding-right: 0; }
+    .wi-num { font-size: 28px; }
+    .wi-title { font-size: 17px; }
+    .wi-text { font-size: 14px; line-height: 1.7; width: 100%; }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .pkg { padding: 36px 24px; }
+    .pkg-price { font-size: 52px; }
+    .how-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    section { padding: 56px 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 24px; }
+    .f-tag { display: none; }
+    .addon-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .addon-banner { flex-direction: column !important; text-align: center !important; }
+  }
+
+  @media (max-width: 480px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Valerno<span>.</span></div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-right" id="nav-right">
+    <a href="#what" onclick="closeMenu()">Services</a>
+    <a href="#packages" onclick="closeMenu()">Pricing</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="booking.html" class="nav-btn">Book a Call</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-line-left"></div>
+    <div class="hero-eyebrow">Content Marketing for the Trades</div>
+    <div class="hero-line-left"></div>
+  </div>
+  <h1>
+    We write it.
+    <span class="italic">You grow.</span>
+    <span class="small">Content marketing for home service businesses.</span>
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Valerno Media handles every blog post, social caption, and email for contractors who want to dominate their local market — without lifting a pen.</p>
+  <div class="hero-buttons">
+    <a href="booking.html" class="btn-cream">Book a Free Call</a>
+    <a href="#packages" class="btn-border">View Pricing</a>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Blog Posts</div>
+    <div class="ticker-item">Social Media</div>
+    <div class="ticker-item">Email Newsletters</div>
+    <div class="ticker-item">Google Business</div>
+    <div class="ticker-item">Local SEO</div>
+    <div class="ticker-item">Plumbing</div>
+    <div class="ticker-item">HVAC</div>
+    <div class="ticker-item">Roofing</div>
+    <div class="ticker-item">Electrical</div>
+    <div class="ticker-item">Landscaping</div>
+    <div class="ticker-item">Blog Posts</div>
+    <div class="ticker-item">Social Media</div>
+    <div class="ticker-item">Email Newsletters</div>
+    <div class="ticker-item">Google Business</div>
+    <div class="ticker-item">Local SEO</div>
+    <div class="ticker-item">Plumbing</div>
+    <div class="ticker-item">HVAC</div>
+    <div class="ticker-item">Roofing</div>
+    <div class="ticker-item">Electrical</div>
+    <div class="ticker-item">Landscaping</div>
+  </div>
+</div>
+
+<section id="what" class="what">
+  <div class="inner">
+    <div class="label">What We Do</div>
+    <h2>All the content.<br><em>None of the headache.</em></h2>
+    <p class="sub">We write everything your business needs to rank on Google and stay top of mind in your local market.</p>
+    <div class="what-list">
+      <div class="what-item">
+        <div class="wi-num">01</div>
+        <div class="wi-title">Blog Posts & SEO</div>
+        <div class="wi-text">Locally targeted articles that rank on Google and bring in organic traffic every month.</div>
+      </div>
+      <div class="what-item">
+        <div class="wi-num">02</div>
+        <div class="wi-title">Social Media Content</div>
+        <div class="wi-text">Facebook, Instagram, and Nextdoor captions that keep your brand visible and your community engaged.</div>
+      </div>
+      <div class="what-item">
+        <div class="wi-num">03</div>
+        <div class="wi-title">Email Newsletters</div>
+        <div class="wi-text">Monthly emails to your past customers that keep you top of mind so they call you first.</div>
+      </div>
+      <div class="what-item">
+        <div class="wi-num">04</div>
+        <div class="wi-title">Google Business Posts</div>
+        <div class="wi-text">Regular updates that boost your local map ranking and help you show up when it matters.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" class="pkg-section">
+  <div class="inner">
+    <div class="label">Pricing</div>
+    <h2 style="color:var(--cream); line-height:1.08;">No contracts.<br><em>No surprises.</em></h2>
+    <p class="sub">Month to month. Pick your plan and we start in 48 hours.</p>
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-price">$350</div>
+        <div class="pkg-mo">per month</div>
+        <div class="pkg-line"></div>
+        <ul>
+          <li>4 blog posts/month</li>
+          <li>8 social media captions</li>
+          <li>4 Google Business posts</li>
+          <li>Local SEO targeting</li>
+        </ul>
+        <a href="booking.html" class="pkg-cta">Get Started</a>
+      </div>
+      <div class="pkg hot">
+        <div class="hot-tag">Most Popular</div>
+        <div class="pkg-name">Growth</div>
+        <div class="pkg-price">$650</div>
+        <div class="pkg-mo">per month</div>
+        <div class="pkg-line"></div>
+        <ul>
+          <li>8 blog posts/month</li>
+          <li>16 social media captions</li>
+          <li>1 email newsletter</li>
+          <li>4 Google Business posts</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <a href="booking.html" class="pkg-cta">Get Started</a>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Pro</div>
+        <div class="pkg-price">$1,100</div>
+        <div class="pkg-mo">per month</div>
+        <div class="pkg-line"></div>
+        <ul>
+          <li>12 long-form blog posts</li>
+          <li>Daily social content</li>
+          <li>2 email newsletters</li>
+          <li>Ad copy included</li>
+          <li>Bi-weekly strategy call</li>
+        </ul>
+        <a href="booking.html" class="pkg-cta">Get Started</a>
+      </div>
+    </div>
+
+    <!-- WEBSITE ADD-ON -->
+    <div style="margin-top: 20px; background: linear-gradient(135deg, #1a1612 0%, #2a2015 100%); border: 1px solid rgba(184,137,42,0.4); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px;" class="addon-banner">
+      <div style="flex: 1; min-width: 260px;">
+        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">One-Time Add-On</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--cream); margin-bottom:8px;">Website Build<span style="color:var(--gold);">.</span></div>
+        <div style="font-size:14px; color:rgba(249,245,238,0.5); font-weight:300; line-height:1.8; max-width:480px;">Don't have a website — or stuck with an embarrassing one? We'll build you a clean, professional, mobile-ready site that actually converts visitors into calls. One flat fee. Done in a week.</div>
+      </div>
+      <div style="text-align:right; flex-shrink:0;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:600; color:var(--gold); line-height:1.2; display:block; margin-bottom:6px;">$999</div>
+        <div style="font-size:11px; color:rgba(249,245,238,0.3); margin-bottom:24px; letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace;">One-time payment</div>
+        <a href="booking.html" style="display:inline-block; background:var(--gold); color:#000; padding:14px 28px; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border-radius:2px; transition:background .2s; white-space:nowrap;" onmouseover="this.style.background='#a07820'" onmouseout="this.style.background='#b8892a'">Get Started →</a>
+      </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); margin-top:1px;" class="addon-grid">
+      <div style="background:#111; padding:28px 24px;">
+        <div style="font-size:20px; margin-bottom:10px;">🏠</div>
+        <div style="font-size:14px; font-weight:500; color:var(--cream); margin-bottom:6px;">Full Homepage</div>
+        <div style="font-size:12px; color:rgba(249,245,238,0.4); line-height:1.7; font-weight:300;">Services, pricing, about, contact — everything a customer needs to call you.</div>
+      </div>
+      <div style="background:#111; padding:28px 24px;">
+        <div style="font-size:20px; margin-bottom:10px;">📱</div>
+        <div style="font-size:14px; font-weight:500; color:var(--cream); margin-bottom:6px;">Mobile Optimized</div>
+        <div style="font-size:12px; color:rgba(249,245,238,0.4); line-height:1.7; font-weight:300;">Looks perfect on every device. Most of your customers will find you on their phone.</div>
+      </div>
+      <div style="background:#111; padding:28px 24px;">
+        <div style="font-size:20px; margin-bottom:10px;">📅</div>
+        <div style="font-size:14px; font-weight:500; color:var(--cream); margin-bottom:6px;">Booking Integration</div>
+        <div style="font-size:12px; color:rgba(249,245,238,0.4); line-height:1.7; font-weight:300;">Online booking or contact form built in so customers can reach you instantly.</div>
+      </div>
+      <div style="background:#111; padding:28px 24px;">
+        <div style="font-size:20px; margin-bottom:10px;">🔍</div>
+        <div style="font-size:14px; font-weight:500; color:var(--cream); margin-bottom:6px;">SEO Ready</div>
+        <div style="font-size:12px; color:rgba(249,245,238,0.4); line-height:1.7; font-weight:300;">Built to rank locally from day one. Your city and services baked into every page.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="how">
+  <div class="inner">
+    <div class="label">How It Works</div>
+    <h2>Running in<br><em>48 hours.</em></h2>
+    <p class="sub" style="margin-bottom:56px;">No complicated setup. No learning curve.</p>
+    <div class="how-grid">
+      <div class="how-item active">
+        <div class="how-n">Step 01</div>
+        <div class="how-title">Book a Free Call</div>
+        <div class="how-text">15 minutes to learn your business, your market, and your goals.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">Step 02</div>
+        <div class="how-title">We Build Your Plan</div>
+        <div class="how-text">A content strategy built for your trade and your city.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">Step 03</div>
+        <div class="how-title">We Write Everything</div>
+        <div class="how-text">Delivered to your Google Drive every month.</div>
+      </div>
+      <div class="how-item">
+        <div class="how-n">Step 04</div>
+        <div class="how-title">You Get More Calls</div>
+        <div class="how-text">More visibility. More leads. More jobs booked.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-bg" style="text-align:center; padding: 80px 40px;">
+  <div class="inner" style="max-width:600px; margin: 0 auto;">
+    <div class="label" style="justify-content:center;">Get In Touch</div>
+    <h2>Ready to get<br><em>more calls?</em></h2>
+    <p style="font-size:16px; color:var(--muted); line-height:1.8; font-weight:300; margin: 16px auto 40px; max-width:440px;">15 minutes is all it takes. No pressure, no pitch — just an honest conversation about whether Valerno is the right fit.</p>
+    <a href="booking.html" class="btn-cream" style="display:inline-block; padding:18px 48px; font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase; text-decoration:none; background:var(--dark); color:var(--cream); border-radius:2px; transition:background .2s;">Book a Free Call</a>
+    <div style="margin-top:40px; display:flex; gap:40px; justify-content:center; flex-wrap:wrap;">
+      <div>
+        <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Email</div>
+        <a href="mailto:valerno.media@gmail.com" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;">valerno.media@gmail.com</a>
+      </div>
+      <div>
+        <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Phone</div>
+        <a href="tel:2155098118" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;">(215) 509-8118</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Valerno<span>.</span></div>
+  <div class="f-tag">To rise. To prevail.</div>
+  <div class="f-right">© 2025 Valerno Media</div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('nav-right');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    const nav = document.getElementById('nav-right');
+    const btn = document.getElementById('hamburger');
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
