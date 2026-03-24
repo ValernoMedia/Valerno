@@ -179,6 +179,70 @@
   .f-logo span { color: var(--gold); }
   .f-right { font-family: 'DM Mono'; font-size: 11px; color: rgba(249,245,238,0.22); letter-spacing: 1px; }
   .f-tag { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: rgba(249,245,238,0.22); }
+  /* ── STATS BAR ── */
+  .stats-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 56px; }
+  .stats-bar .inner { max-width: 1100px; margin: 0 auto; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-item { padding: 44px 32px; border-right: 1px solid var(--border); text-align: center; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 68px; font-weight: 300; line-height: 1; color: var(--dark); margin-bottom: 8px; letter-spacing: -2px; }
+  .stat-num em { font-style: normal; color: var(--gold); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
+
+  /* ── MANIFESTO ── */
+  .manifesto { background: var(--dark); padding: 130px 56px; text-align: center; position: relative; overflow: hidden; }
+  .manifesto::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(184,137,42,0.05) 0%, transparent 70%); pointer-events: none; }
+  .manifesto-inner { max-width: 860px; margin: 0 auto; position: relative; }
+  .manifesto-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 52px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .manifesto-eyebrow::before, .manifesto-eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gold); opacity: .6; }
+  .manifesto-statement { display: flex; flex-direction: column; gap: 0; margin-bottom: 44px; }
+  .ms-line { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 68px); font-weight: 300; line-height: 1.12; letter-spacing: -1px; display: block; }
+  .ms-dim { color: rgba(249,245,238,0.18); }
+  .ms-mid { color: rgba(249,245,238,0.55); }
+  .ms-bright { color: var(--cream); font-style: italic; }
+  .ms-gold { color: var(--gold); font-style: italic; }
+  .manifesto-body { font-size: 15px; color: rgba(249,245,238,0.4); font-weight: 300; line-height: 2; max-width: 500px; margin: 0 auto 52px; }
+  .manifesto-facts { display: flex; justify-content: center; gap: 0; border: 1px solid rgba(255,255,255,0.06); }
+  .mf-item { padding: 20px 32px; border-right: 1px solid rgba(255,255,255,0.06); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(249,245,238,0.3); }
+  .mf-item:last-child { border-right: none; }
+  .mf-item em { color: var(--gold); font-style: normal; display: block; font-size: 11px; margin-bottom: 4px; }
+
+  /* ── SAMPLES ── */
+  .samples { background: var(--light); }
+  .sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .sample-card { background: white; padding: 40px 36px; transition: background .2s; cursor: default; }
+  .sample-card:hover { background: var(--cream); }
+  .sample-type { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .sample-type::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+  .sample-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; line-height: 1.35; color: var(--dark); margin-bottom: 12px; }
+  .sample-preview { font-size: 13px; color: var(--muted); line-height: 1.9; font-weight: 300; font-style: italic; }
+  .sample-tags { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; }
+  .sample-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 4px 10px; border: 1px solid var(--border); }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--cream); }
+  .faq-list { border-top: 1px solid var(--border); max-width: 700px; }
+  details.faq-item { border-bottom: 1px solid var(--border); }
+  details.faq-item summary { list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; font-size: 16px; font-weight: 500; color: var(--dark); gap: 24px; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  .faq-icon { flex-shrink: 0; width: 28px; height: 28px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--muted); transition: all .2s; font-family: 'DM Mono', monospace; font-weight: 300; }
+  details[open] .faq-icon { border-color: var(--gold); color: var(--gold); transform: rotate(45deg); }
+  .faq-answer { font-size: 14px; color: var(--muted); line-height: 1.9; font-weight: 300; padding-bottom: 24px; max-width: 580px; }
+
+  /* ── SCROLL REVEAL ── */
+  [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+  [data-reveal].visible { opacity: 1; transform: none; }
+
+  /* ── NAV SCROLLED ── */
+  nav.scrolled { box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(15,14,12,0.06); }
+
+  /* ── TICKER PAUSE ── */
+  .ticker:hover .ticker-inner { animation-play-state: paused; }
+
+  /* ── HERO GLOW ── */
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 65%, rgba(184,137,42,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  .hero > * { position: relative; z-index: 1; }
+
   /* ── MOBILE ── */
   /* ── MOBILE ── */
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 300; background: none; border: none; padding: 4px; }
@@ -226,6 +290,19 @@
   @media (max-width: 480px) {
     .how-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 38px; }
+  }
+  @media (max-width: 768px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+    .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-num { font-size: 52px; }
+    .manifesto { padding: 80px 24px; }
+    .ms-line { font-size: clamp(30px, 9vw, 50px); }
+    .manifesto-facts { flex-direction: column; }
+    .mf-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mf-item:last-child { border-bottom: none; }
+    .sample-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -288,12 +365,35 @@
   </div>
 </div>
 
+<div class="stats-bar">
+  <div class="inner">
+    <div class="stat-grid">
+      <div class="stat-item" data-reveal>
+        <div class="stat-num">100<em>%</em></div>
+        <div class="stat-label">Month-to-Month</div>
+      </div>
+      <div class="stat-item" data-reveal style="transition-delay:.1s">
+        <div class="stat-num">3<em>×</em></div>
+        <div class="stat-label">Avg Traffic Growth</div>
+      </div>
+      <div class="stat-item" data-reveal style="transition-delay:.2s">
+        <div class="stat-num">48<em>hr</em></div>
+        <div class="stat-label">First Content Delivered</div>
+      </div>
+      <div class="stat-item" data-reveal style="transition-delay:.3s">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Contracts Required</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section id="what" class="what">
   <div class="inner">
     <div class="label">What We Do</div>
     <h2>All the content.<br><em>None of the headache.</em></h2>
     <p class="sub">We write everything your business needs to rank on Google and stay top of mind in your local market.</p>
-    <div class="what-list">
+    <div class="what-list" data-reveal>
       <div class="what-item">
         <div class="wi-num">01</div>
         <div class="wi-title">Blog Posts & SEO</div>
@@ -323,7 +423,7 @@
     <div class="label">Pricing</div>
     <h2 style="color:var(--cream); line-height:1.08;">No contracts.<br><em>No surprises.</em></h2>
     <p class="sub">Month to month. Pick your plan and we start in 48 hours.</p>
-    <div class="pkg-grid">
+    <div class="pkg-grid" data-reveal>
       <div class="pkg">
         <div class="pkg-name">Starter</div>
         <div class="pkg-price">$350</div>
@@ -414,7 +514,7 @@
     <div class="label">How It Works</div>
     <h2>Running in<br><em>48 hours.</em></h2>
     <p class="sub" style="margin-bottom:56px;">No complicated setup. No learning curve.</p>
-    <div class="how-grid">
+    <div class="how-grid" data-reveal>
       <div class="how-item active">
         <div class="how-n">Step 01</div>
         <div class="how-title">Book a Free Call</div>
@@ -439,6 +539,102 @@
   </div>
 </section>
 
+<section class="manifesto" data-reveal>
+  <div class="manifesto-inner">
+    <div class="manifesto-eyebrow">The Valerno Standard</div>
+    <div class="manifesto-statement">
+      <span class="ms-line ms-dim">Good contractors lose jobs every day.</span>
+      <span class="ms-line ms-mid">Not because of their work.</span>
+      <span class="ms-line ms-gold">Because nobody could find them.</span>
+    </div>
+    <p class="manifesto-body">That's what we fix. Content that ranks, connects, and converts — delivered every single month while you stay focused on the job.</p>
+    <div class="manifesto-facts">
+      <div class="mf-item"><em>60–90 days</em>First-page rankings</div>
+      <div class="mf-item"><em>Yours to approve</em>Every piece, every time</div>
+      <div class="mf-item"><em>Month-to-month</em>No contract. Ever.</div>
+    </div>
+  </div>
+</section>
+
+<section class="samples">
+  <div class="inner">
+    <div class="label">Sample Work</div>
+    <h2>What we actually<br><em>write for you.</em></h2>
+    <p class="sub">Real examples of the content your business gets every month.</p>
+    <div class="sample-grid" data-reveal>
+      <div class="sample-card">
+        <div class="sample-type">Blog Post</div>
+        <div class="sample-title">7 Signs Your HVAC System Is About to Fail (And What Phoenix Homeowners Should Do)</div>
+        <div class="sample-preview">"Most HVAC systems give you clear warning signs weeks before they break down. Here's what to watch for — and when it's time to call a pro before a small issue turns into a $4,000 replacement..."</div>
+        <div class="sample-tags">
+          <span class="sample-tag">SEO-Targeted</span>
+          <span class="sample-tag">1,200 Words</span>
+          <span class="sample-tag">Local Keywords</span>
+        </div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-type">Social Caption</div>
+        <div class="sample-title">Before/After — Facebook & Instagram</div>
+        <div class="sample-preview">"Called in for a 'small leak.' Found this. Twenty minutes later — dry, sealed, no more dripping. Sometimes the best jobs are the quick ones. Need a plumber in [City]? We're always one call away. 🔧"</div>
+        <div class="sample-tags">
+          <span class="sample-tag">Engagement</span>
+          <span class="sample-tag">Local</span>
+          <span class="sample-tag">Facebook + Instagram</span>
+        </div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-type">Email Newsletter</div>
+        <div class="sample-title">Subject: A quick note from [Business] — plus something for our regulars</div>
+        <div class="sample-preview">"Hey [First Name] — it's been a minute. We wanted to check in, share a seasonal tip about your water heater, and say thank you for being a past customer. We're running a deal this month just for people like you..."</div>
+        <div class="sample-tags">
+          <span class="sample-tag">Re-Engagement</span>
+          <span class="sample-tag">Repeat Bookings</span>
+          <span class="sample-tag">Monthly</span>
+        </div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-type">Google Business Post</div>
+        <div class="sample-title">Weekly Update — Local Map Pack Boost</div>
+        <div class="sample-preview">"Just finished a full electrical panel upgrade in [Neighborhood]. If your home is 15+ years old, your panel may not be up to code. We're booking inspections this week — tap below to request yours."</div>
+        <div class="sample-tags">
+          <span class="sample-tag">Local SEO</span>
+          <span class="sample-tag">Map Pack</span>
+          <span class="sample-tag">Weekly</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="inner">
+    <div class="label">FAQ</div>
+    <h2>Questions<br><em>answered.</em></h2>
+    <div class="faq-list" data-reveal>
+      <details class="faq-item">
+        <summary>Do I have to write anything? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">No. You fill out a short onboarding form once — tells us your trade, your city, and your goals. After that, we handle every word. You review and approve before anything goes live.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How fast will I see results? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Social engagement is immediate. SEO results typically show measurable traffic growth within 60–90 days. Email campaigns book jobs in the same week they go out.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I don't like the content? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">You get unlimited revision requests. If something doesn't sound like you, say so and we rewrite it. Most clients request zero changes after the first month once we've nailed your voice.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you work with my trade? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Yes — plumbing, HVAC, electrical, roofing, landscaping, pest control, painting, flooring, and more. If you're a home service business, we know your industry.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a contract? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Never. Every plan is month-to-month. Cancel anytime with 30 days' notice, no questions asked. We keep clients by delivering results, not by locking them in.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact-bg" style="text-align:center; padding: 80px 40px;">
   <div class="inner" style="max-width:600px; margin: 0 auto;">
     <div class="label" style="justify-content:center;">Get In Touch</div>
@@ -448,7 +644,7 @@
     <div style="margin-top:40px; display:flex; gap:40px; justify-content:center; flex-wrap:wrap;">
       <div>
         <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Email</div>
-        <a href="mailto:valerno.media@gmail.com" id="main-email" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;">valerno&#46;media&#64;gmail&#46;com</a>
+        <a href="/cdn-cgi/l/email-protection#99eff8f5fcebf7f6b7f4fcfdf0f8d9fef4f8f0f5b7faf6f4" id="main-email" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;">valerno&#46;media&#64;gmail&#46;com</a>
       </div>
       <div>
         <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Phone</div>
@@ -464,7 +660,7 @@
   <div class="f-right">© 2025 Valerno Media</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleMenu() {
     const nav = document.getElementById('nav-right');
     const btn = document.getElementById('hamburger');
@@ -478,6 +674,27 @@
     nav.classList.remove('open');
     btn.classList.remove('open');
     document.body.style.overflow = '';
+  }
+
+  // Nav scroll state
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window) {
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
   }
 </script>
 </body>
