@@ -374,7 +374,7 @@
         <div style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--cream); margin-bottom:8px;">Website Build<span style="color:var(--gold);">.</span></div>
         <div style="font-size:14px; color:rgba(249,245,238,0.5); font-weight:300; line-height:1.8; max-width:480px;">Don't have a website — or stuck with an embarrassing one? We'll build you a clean, professional, mobile-ready site that actually converts visitors into calls. One flat fee. Done in a week.</div>
       </div>
-      <div style="text-align:right; flex-shrink:0;">
+      <div style="text-align:right; flex-shrink:0;" class="addon-right">
         <div style="font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:600; color:var(--gold); line-height:1.2; display:block; margin-bottom:6px;">$999</div>
         <div style="font-size:11px; color:rgba(249,245,238,0.3); margin-bottom:24px; letter-spacing:2px; text-transform:uppercase; font-family:'DM Mono',monospace;">One-time payment</div>
         <a href="booking.html" style="display:inline-block; background:var(--gold); color:#000; padding:14px 28px; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border-radius:2px; transition:background .2s; white-space:nowrap;" onmouseover="this.style.background='#a07820'" onmouseout="this.style.background='#b8892a'">Get Started →</a>
@@ -447,7 +447,7 @@
     <div style="margin-top:40px; display:flex; gap:40px; justify-content:center; flex-wrap:wrap;">
       <div>
         <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Email</div>
-        <a href="mailto:valerno.media@gmail.com" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;">valerno.media@gmail.com</a>
+        <a href="mailto:valerno.media@gmail.com" style="color:var(--dark); text-decoration:none; font-size:14px; font-weight:500;"><span class="cf-email"></span><script>document.querySelectorAll(".cf-email")[document.querySelectorAll(".cf-email").length-1].textContent="valerno.media@gmail.com"</script></a>
       </div>
       <div>
         <div class="ct-label" style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px;">Phone</div>
@@ -465,10 +465,4 @@
 
 <script>
   function toggleMenu() {
-    const nav = document.getElementById('nav-right');
-    const btn = document.getElementById('hamburger');
-    nav.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-  }
-  function closeMe
+    const nav = document.getEl
