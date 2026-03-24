@@ -184,6 +184,17 @@
   <div class="hero-tag">New Client Setup</div>
   <h1>Welcome to<br><em>Valerno Media.</em></h1>
   <p>Fill out this short form so we can tailor your content strategy. Takes about 5 minutes.</p>
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-steps">
+      <div class="progress-step"><div class="step-dot active" id="dot-0">01</div><div class="step-label active">Business</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-1">02</div><div class="step-label">Services</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-2">03</div><div class="step-label">Social</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-3">04</div><div class="step-label">Email</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-4">05</div><div class="step-label">Google</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-5">06</div><div class="step-label">Photos</div></div>
+      <div class="progress-step"><div class="step-dot" id="dot-6">07</div><div class="step-label">Final</div></div>
+    </div>
+  </div>
 </div>
 
 <div class="form-wrap">
@@ -441,8 +452,11 @@
   <div class="success-screen" id="success-screen">
     <div class="success-circle">✓</div>
     <h2>You're all <em>set.</em></h2>
-    <p>We've received everything we need. Expect your first batch of content within the week.</p>
-    <a href="index.html" class="back-btn">← Back to Site</a>
+    <p>We've received everything we need. Expect your first batch of content within the week — we'll reach out if we have any questions.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="back-btn">← Back to Site</a>
+      <a href="booking.html" style="display:inline-block;background:var(--gold);color:#000;padding:14px 32px;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:2px;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#a07820'" onmouseout="this.style.background='var(--gold)'">Book Your Kickoff Call →</a>
+    </div>
   </div>
 
 </div>
@@ -463,6 +477,39 @@
         d.style.color = '';
       });
     }
+  }
+
+  // Progress bar
+  const cards = document.querySelectorAll('.card');
+  const dots = Array.from({length: 7}, (_, i) => document.getElementById('dot-' + i));
+  const labels = document.querySelectorAll('.step-label');
+
+  function updateProgress(activeIdx) {
+    dots.forEach((dot, i) => {
+      dot.classList.remove('active', 'done');
+      labels[i].classList.remove('active');
+      if (i < activeIdx) {
+        dot.classList.add('done');
+        dot.textContent = '✓';
+      } else if (i === activeIdx) {
+        dot.classList.add('active');
+        dot.textContent = String(i + 1).padStart(2, '0');
+        labels[i].classList.add('active');
+      } else {
+        dot.textContent = String(i + 1).padStart(2, '0');
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const cardObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateProgress(Array.from(cards).indexOf(entry.target));
+        }
+      });
+    }, { threshold: 0.35, rootMargin: '-5% 0px -45% 0px' });
+    cards.forEach(card => cardObs.observe(card));
   }
 
   document.getElementById('onboarding-form').addEventListener('submit', function(e) {

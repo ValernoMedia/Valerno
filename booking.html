@@ -155,6 +155,8 @@
   .f-copy { font-family: 'DM Mono'; font-size: 11px; color: rgba(255,255,255,0.2); }
   .f-tag { font-family: 'Cormorant Garamond'; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.2); }
 
+  nav.scrolled { box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.3); background: rgba(12,11,9,0.98); }
+
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
     .page { grid-template-columns: 1fr; }
@@ -207,14 +209,14 @@
 
     <div class="contact-row">
       <div class="contact-item">
-        <div class="ci-icon">📧</div>
+        <div class="ci-icon" style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);">@</div>
         <div>
           <div class="ci-label">Email</div>
-          <div class="ci-val"><a href="/cdn-cgi/l/email-protection#3f495e535a4d515011525a5b565e7f58525e5653115c5052" id="contact-email">valerno&#46;media&#64;gmail&#46;com</a></div>
+          <div class="ci-val"><a href="mailto:valerno.media@gmail.com" id="contact-email">valerno.media@gmail.com</a></div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="ci-icon">📞</div>
+        <div class="ci-icon" style="font-family:'DM Mono',monospace;font-size:15px;color:var(--gold);">✆</div>
         <div>
           <div class="ci-label">Call or Text</div>
           <div class="ci-val"><a href="tel:2155098118">(215) 509-8118</a></div>
@@ -226,8 +228,8 @@
   <!-- RIGHT -->
   <div class="right">
     <div class="booking-tabs">
-      <button class="tab active" onclick="showTab('calendar')">📅 Book a Time</button>
-      <button class="tab" onclick="showTab('form')">✉️ Send a Message</button>
+      <button class="tab active" onclick="showTab('calendar')">Book a Time</button>
+      <button class="tab" onclick="showTab('form')">Send a Message</button>
     </div>
 
     <!-- CALENDLY EMBED -->
@@ -238,16 +240,11 @@
 
     <!-- SEND A MESSAGE -->
     <div class="form-panel" id="form-panel">
-      <div style="margin-bottom:28px;">
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Your Name</div>
-        <input id="msg-name" type="text" placeholder="John Smith" style="width:100%; padding:13px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); font-family:'Outfit',sans-serif; font-size:14px; color:var(--white); outline:none; border-radius:2px; margin-bottom:14px;"/>
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Your Email</div>
-        <input id="msg-email" type="email" placeholder="john@smithplumbing.com" style="width:100%; padding:13px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); font-family:'Outfit',sans-serif; font-size:14px; color:var(--white); outline:none; border-radius:2px; margin-bottom:14px;"/>
-        <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Your Message</div>
-        <textarea id="msg-body" placeholder="Tell us about your business and what you're looking for..." style="width:100%; height:160px; padding:13px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); font-family:'Outfit',sans-serif; font-size:14px; color:var(--white); outline:none; border-radius:2px; resize:none;"></textarea>
-      </div>
-      <button onclick="sendEmail()" style="width:100%; padding:16px; background:var(--gold); color:#000; border:none; font-family:'Outfit',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; cursor:pointer; border-radius:2px;">Open in Email App →</button>
-      <p style="font-size:12px; color:rgba(255,255,255,0.25); margin-top:12px; text-align:center; font-family:'DM Mono',monospace;">Opens your email app with everything pre-filled</p>
+      <div class="fg"><label>Your Name</label><input id="msg-name" type="text" placeholder="John Smith"/></div>
+      <div class="fg"><label>Your Email</label><input id="msg-email" type="email" placeholder="john@smithplumbing.com"/></div>
+      <div class="fg"><label>Your Message</label><textarea id="msg-body" style="height:160px;" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
+      <button onclick="sendEmail()" class="submit">Open in Email App →</button>
+      <p style="font-size:11px; color:rgba(255,255,255,0.2); margin-top:14px; text-align:center; font-family:'DM Mono',monospace; letter-spacing:1px;">Opens your email app with everything pre-filled</p>
     </div>
 
   </div>
@@ -267,6 +264,12 @@
     const bodyEncoded = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + body);
     window.location.href = 'mailto:valerno.media@gmail.com?subject=' + subject + '&body=' + bodyEncoded;
   }
+
+  // Nav scroll state
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
 
   function showTab(tab) {
     const calPanel = document.getElementById('cal-panel');
