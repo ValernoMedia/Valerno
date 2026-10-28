@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hollis &amp; Pine — Sample site by Valerno</title>
+<meta name="description" content="A sample restaurant website with a real menu and online reservations, built by Valerno Media. Hollis & Pine is a fictional restaurant.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f6f1e7;
+    --cream-2: #ece4d4;
+    --green: #1f3a2e;
+    --green-2: #2c4c3d;
+    --clay: #b5562f;
+    --clay-hi: #c96639;
+    --ink: #1b1a17;
+    --ink-2: #4a463f;
+    --muted: #857d70;
+    --line: rgba(27, 26, 23, 0.12);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  button, input, select { font: inherit; color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  .demo-bar { background: var(--ink); color: #d6cfc2; font-size: 13px; text-align: center; padding: 9px 16px; }
+  .demo-bar a { color: #fff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); margin-left: 6px; white-space: nowrap; }
+
+  nav { position: absolute; top: 0; left: 0; right: 0; z-index: 30; color: var(--cream); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 20px; }
+  .logo { font-family: var(--serif); font-size: 28px; font-weight: 500; text-decoration: none; letter-spacing: -0.01em; }
+  .logo em { font-style: italic; font-weight: 400; color: #e9b99e; }
+  .links { display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 500; }
+  .links a { text-decoration: none; opacity: .9; }
+  .links a:hover { opacity: 1; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 15px; text-decoration: none; padding: 13px 24px; border-radius: 999px; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .btn.clay { background: var(--clay); color: #fff; }
+  .btn.clay:hover { background: var(--clay-hi); }
+  .btn.line { border-color: rgba(246,241,231,0.6); color: var(--cream); }
+  .btn.line:hover { background: var(--cream); color: var(--green); border-color: var(--cream); }
+  .btn.dark { background: var(--green); color: var(--cream); }
+  .btn.dark:hover { background: var(--green-2); }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+
+  .hero { position: relative; min-height: 92svh; display: flex; align-items: flex-end; color: var(--cream); overflow: hidden; }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background:
+      linear-gradient(90deg, rgba(16,20,17,0.82) 0%, rgba(16,20,17,0.55) 45%, rgba(16,20,17,0.1) 80%),
+      linear-gradient(180deg, rgba(16,20,17,0.6) 0%, rgba(16,20,17,0) 22%, rgba(16,20,17,0) 55%, rgba(16,20,17,0.85) 100%); }
+  .hero-in { position: relative; z-index: 2; padding-bottom: 72px; width: 100%; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+  .hero .eyebrow { color: #e9b99e; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 9vw, 128px); line-height: 0.95; letter-spacing: -0.025em; margin: 18px 0 22px; max-width: 900px; }
+  h1 em { font-style: italic; padding-right: 0.1em; }
+  .hero p { font-size: 19px; max-width: 520px; opacity: .92; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .hero-meta { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(246,241,231,0.25); font-size: 14px; }
+  .hero-meta b { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #e9b99e; margin-bottom: 2px; }
+
+  section { padding: 110px 0; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 5.5vw, 72px); line-height: 1; letter-spacing: -0.02em; margin-top: 14px; }
+  h2 em { font-style: italic; color: var(--clay); }
+  .eyebrow.c { color: var(--clay); }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 44px; }
+  .head p { color: var(--ink-2); max-width: 420px; font-size: 17px; }
+
+  /* menu */
+  .tabs { display: inline-flex; gap: 4px; padding: 5px; border-radius: 999px; background: var(--cream-2); margin-bottom: 40px; }
+  .tabs button { border: 0; background: none; padding: 10px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; color: var(--ink-2); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--green); color: var(--cream); }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
+  .menu-col h3 { font-family: var(--serif); font-weight: 500; font-style: italic; font-size: 26px; color: var(--green); padding-bottom: 12px; border-bottom: 1.5px solid var(--green); margin: 0 0 6px; }
+  .menu-col + .menu-col h3 { }
+  .dish { padding: 16px 0; border-bottom: 1px dashed var(--line); }
+  .dish-top { display: flex; align-items: baseline; gap: 12px; }
+  .dish-top b { font-size: 17px; font-weight: 600; }
+  .dish-top .dots { flex: 1; border-bottom: 1px dotted rgba(27,26,23,0.3); transform: translateY(-4px); }
+  .dish-top .p { font-family: var(--serif); font-size: 19px; }
+  .dish p { color: var(--muted); font-size: 14.5px; margin-top: 3px; }
+  .tag { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); background: #dbe5dc; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .menu-note { margin-top: 30px; color: var(--muted); font-size: 14px; }
+  .menu-section[hidden] { display: none; }
+
+  /* feature band */
+  .band { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; padding: 0 14px; }
+  .band figure { aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: var(--cream-2); position: relative; }
+  .band img { width: 100%; height: 100%; object-fit: cover; }
+  .band figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(246,241,231,0.94); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; }
+
+  /* reserve */
+  .reserve { background: var(--green); color: var(--cream); }
+  .reserve .eyebrow { color: #e9b99e; }
+  .reserve h2 em { color: #e9b99e; }
+  .reserve .head p { color: #c9d3cb; }
+  .rbox { background: var(--cream); color: var(--ink); border-radius: 22px; padding: 34px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .rbox label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .party { display: flex; gap: 6px; flex-wrap: wrap; }
+  .party button { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--line); background: #fff; font-weight: 700; cursor: pointer; }
+  .party button[aria-pressed="true"] { background: var(--green); color: var(--cream); border-color: var(--green); }
+  .rbox select, .rbox input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; font-size: 16px; }
+  .rbox select:focus, .rbox input:focus { outline: none; border-color: var(--green); }
+  .times { grid-column: 1 / -1; }
+  .time-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .time-grid button { padding: 10px 16px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; font-weight: 600; cursor: pointer; }
+  .time-grid button[aria-pressed="true"] { background: var(--clay); color: #fff; border-color: var(--clay); }
+  .time-grid button:disabled { color: #bbb3a6; text-decoration: line-through; cursor: not-allowed; border-style: dashed; background: transparent; }
+  .who { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; padding-top: 18px; border-top: 1px solid var(--line); }
+  .rdone { grid-column: 1 / -1; text-align: center; padding: 30px 0 10px; display: none; }
+  .rdone h3 { font-family: var(--serif); font-weight: 400; font-size: 46px; line-height: 1; }
+  .rdone h3 em { color: var(--clay); }
+  .rdone p { color: var(--ink-2); margin-top: 12px; }
+  .rdone small { display: block; margin-top: 10px; color: var(--muted); }
+  .rbox.booked > :not(.rdone) { display: none; }
+  .rbox.booked .rdone { display: block; }
+  .alt { margin-top: 22px; font-size: 15px; color: #c9d3cb; }
+  .alt a { color: #fff; font-weight: 600; }
+
+  /* visit */
+  .visit-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .visit-img { border-radius: 22px; overflow: hidden; aspect-ratio: 5 / 4; background: var(--cream-2); }
+  .visit-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hrs { margin-top: 26px; }
+  .hrs div { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .hrs div.today { color: var(--clay); font-weight: 700; }
+  .info { display: grid; gap: 8px; margin-top: 26px; font-weight: 600; }
+  .info a { text-decoration: none; }
+  .info a:hover { color: var(--clay); }
+
+  footer { background: var(--ink); color: #a9a196; padding: 40px 0; font-size: 14px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot .logo { color: var(--cream); font-size: 24px; }
+  .foot a { color: #fff; text-decoration: none; font-weight: 700; }
+
+  @media (max-width: 960px) {
+    .links .hide-m { display: none; }
+    .menu-grid, .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+    .rbox { grid-template-columns: 1fr; }
+    .who { grid-template-columns: 1fr; }
+    .band { grid-template-columns: 1fr 1fr; }
+    .band figure:last-child { display: none; }
+    section { padding: 80px 0; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .nav-in { height: 70px; }
+    .logo { font-size: 23px; }
+    .links .btn { padding: 10px 16px; font-size: 14px; }
+    .hero-in { padding-bottom: 48px; }
+    .hero p { font-size: 17px; }
+    .hero-cta .btn { flex: 1; }
+    .hero-meta { gap: 16px 26px; }
+    .tabs { display: flex; }
+    .tabs button { flex: 1; padding: 10px 8px; }
+    .band { grid-template-columns: 1fr; padding: 0 16px; }
+    .band figure { aspect-ratio: 4 / 3; }
+    .band figure:last-child { display: block; }
+    .rbox { padding: 24px 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Sample site built by Valerno. Hollis &amp; Pine isn't a real restaurant.<a href="https://valerno.org/#restaurants">Want one for your restaurant? →</a></div>
+
+<header class="hero" id="top">
+  <img src="img/hero.jpg" alt="Dining room at Hollis & Pine in the evening">
+  <nav>
+    <div class="wrap nav-in">
+      <a href="#top" class="logo">Hollis <em>&amp;</em> Pine</a>
+      <div class="links">
+        <a href="#menu" class="hide-m">Menu</a>
+        <a href="#visit" class="hide-m">Hours</a>
+        <a href="#reserve" class="btn clay">Reserve</a>
+      </div>
+    </div>
+  </nav>
+  <div class="wrap hero-in">
+    <span class="eyebrow">Church Hill · Richmond, VA</span>
+    <h1>Supper, the <em>Richmond</em> way.</h1>
+    <p>Southern cooking with whatever Virginia farms are bringing in this week. Dinner Tuesday through Saturday, brunch on Sundays.</p>
+    <div class="hero-cta">
+      <a href="#reserve" class="btn clay">Reserve a table</a>
+      <a href="#menu" class="btn line">See the menu</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>Tonight</b><span id="tonight">—</span></div>
+      <div><b>Walk-ins</b>Bar seats, first come</div>
+      <div><b>Pickup</b>Order ahead, ready in 25 min</div>
+    </div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow c">The menu</span><h2>What's <em>cooking</em></h2></div>
+      <p>Real text, not a blurry PDF, so it reads on any phone and shows up when people search for what they're craving.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="dinner">Dinner</button>
+      <button role="tab" aria-selected="false" data-tab="brunch">Sunday Brunch</button>
+      <button role="tab" aria-selected="false" data-tab="drinks">Drinks</button>
+    </div>
+    <div id="menu-sections"></div>
+    <p class="menu-note">GF = gluten free · V = vegetarian. Menu changes with the season, so a few dishes may differ when you visit.</p>
+  </div>
+</section>
+
+<div class="band">
+  <figure><img src="img/dish1.jpg" alt="Shrimp and grits" loading="lazy"><figcaption>Shrimp &amp; grits</figcaption></figure>
+  <figure><img src="img/dish2.jpg" alt="Fried chicken with hot honey" loading="lazy"><figcaption>Hot honey chicken</figcaption></figure>
+  <figure><img src="img/cocktail.jpg" alt="Bourbon cocktail at the bar" loading="lazy"><figcaption>The Hollis Old Fashioned</figcaption></figure>
+</div>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Reservations</span><h2>Save us a <em>seat</em></h2></div>
+      <p>Book in a few taps, any time. For parties over 8 or a private dinner, give us a call.</p>
+    </div>
+    <div class="rbox" id="rbox">
+      <div><label>Party size</label><div class="party" id="party"></div></div>
+      <div><label for="r-date">Date</label><select id="r-date"></select></div>
+      <div><label for="r-seat">Seating</label><select id="r-seat"><option>Dining room</option><option>Patio (weather permitting)</option><option>Bar</option></select></div>
+      <div class="times"><label>Available times</label><div class="time-grid" id="times"></div></div>
+      <div class="who">
+        <div><label for="r-name">Name</label><input id="r-name" autocomplete="name"></div>
+        <div><label for="r-phone">Mobile</label><input id="r-phone" type="tel" autocomplete="tel"></div>
+        <button class="btn clay" id="r-go" disabled>Book table</button>
+      </div>
+      <div class="rdone">
+        <h3>See you <em>soon.</em></h3>
+        <p id="r-confirm"></p>
+        <small>This is a demo, so no real reservation was made.</small>
+        <p style="margin-top:20px"><button class="btn dark" id="r-again">Make another</button></p>
+      </div>
+    </div>
+    <p class="alt">Rather order pickup? <a href="#menu">Order online</a> and it'll be ready in about 25 minutes.</p>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit-grid">
+    <div class="visit-img"><img src="img/interior.jpg" alt="The bar at Hollis & Pine" loading="lazy"></div>
+    <div>
+      <span class="eyebrow c">Visit</span><h2>Find <em>us</em></h2>
+      <div class="hrs" id="hrs"></div>
+      <div class="info">
+        <span>Church Hill, Richmond, VA</span>
+        <a href="tel:+18045550187">(804) 555-0187</a>
+        <a href="#" onclick="return false">@hollisandpine</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="logo">Hollis &amp; Pine</a>
+    <span>Sample site · Website and reservations by <a href="https://valerno.org">Valerno</a></span>
+  </div>
+</footer>
+
+<script>
+  const MENU = {
+    dinner: [
+      ['To start', [
+        ['Pimento cheese', 11, 'House crackers, pepper jelly, pickled okra', 'V'],
+        ['Fried green tomatoes', 13, 'Buttermilk ranch, chow chow, chives', 'V'],
+        ['Virginia oysters', 18, 'Half dozen, mignonette, hot sauce', 'GF'],
+        ['Cornbread skillet', 9, 'Sorghum butter, flaky salt', 'V'],
+      ]],
+      ['Mains', [
+        ['Shrimp & grits', 27, 'Stone-ground grits, tasso gravy, scallions', ''],
+        ['Hot honey chicken', 25, 'Half bird, collards, mac and cheese', ''],
+        ['Pan-seared trout', 29, 'Brown butter, field peas, lemon', 'GF'],
+        ['Smoked pork chop', 31, 'Apple mostarda, sweet potato, greens', 'GF'],
+        ['Mushroom & farro', 22, 'Roasted mushrooms, egg yolk, parmesan', 'V'],
+      ]],
+    ],
+    brunch: [
+      ['Sweet', [
+        ['Buttermilk pancakes', 13, 'Whipped butter, Virginia maple', 'V'],
+        ['Banana pudding French toast', 15, 'Vanilla wafers, brûléed banana', 'V'],
+      ]],
+      ['Savory', [
+        ['Chicken & biscuit', 16, 'Fried thigh, sawmill gravy, hot honey', ''],
+        ['Shrimp & grits', 19, 'Brunch portion, poached egg', ''],
+        ['Hollis breakfast', 15, 'Two eggs, country ham, grits, biscuit', ''],
+        ['Veggie hash', 14, 'Sweet potato, peppers, two eggs', 'V GF'],
+      ]],
+    ],
+    drinks: [
+      ['Cocktails', [
+        ['Hollis Old Fashioned', 14, 'Virginia bourbon, sorghum, orange', ''],
+        ['Church Hill Spritz', 12, 'Aperitivo, sparkling wine, grapefruit', ''],
+        ['Porch Lemonade', 11, 'Vodka, mint, lemon, tea', ''],
+      ]],
+      ['Beer & zero proof', [
+        ['Local draft', 7, 'Rotating Richmond breweries', ''],
+        ['Hard cider', 8, 'Virginia apples, dry', 'GF'],
+        ['Sweet tea', 4, 'Free refills, obviously', ''],
+        ['Ginger switchel', 6, 'Ginger, apple cider vinegar, honey', ''],
+      ]],
+    ],
+  };
+  // 0 = Sunday; null = closed. Hours as [open, close] in 24h.
+  const HOURS = [[10, 14.5], null, [17, 22], [17, 22], [17, 22], [17, 23], [17, 23]];
+  const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const $ = s => document.querySelector(s);
+  const dayKey = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  const fmt = h => { const hr = Math.floor(h), m = h % 1 ? ':30' : ''; return ((hr + 11) % 12 + 1) + m + (hr >= 12 ? 'pm' : 'am'); };
+
+  $('#menu-sections').innerHTML = Object.entries(MENU).map(([key, cols], i) => `
+    <div class="menu-section menu-grid" data-section="${key}" ${i ? 'hidden' : ''}>
+      ${cols.map(([title, items]) => `<div class="menu-col"><h3>${title}</h3>${items.map(([n, p, d, t]) => `
+        <div class="dish"><div class="dish-top"><b>${n}${t ? t.split(' ').map(x => `<span class="tag">${x}</span>`).join('') : ''}</b><span class="dots"></span><span class="p">${p}</span></div><p>${d}</p></div>`).join('')}</div>`).join('')}
+    </div>`).join('');
+
+  document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-tab]').forEach(x => x.setAttribute('aria-selected', x === b));
+    document.querySelectorAll('[data-section]').forEach(s => s.hidden = s.dataset.section !== b.dataset.tab);
+  }));
+
+  const now = new Date(), today = now.getDay(), r = HOURS[today];
+  $('#tonight').textContent = r ? (today === 0 ? 'Brunch ' : 'Dinner ') + fmt(r[0]) + ' – ' + fmt(r[1]) : 'Closed today';
+  $('#hrs').innerHTML = [2, 3, 4, 5, 6, 0, 1].map(d =>
+    `<div class="${d === today ? 'today' : ''}"><span>${DAYS[d]}${d === 0 ? ' (brunch)' : ''}</span><span>${HOURS[d] ? fmt(HOURS[d][0]) + ' – ' + fmt(HOURS[d][1]) : 'Closed'}</span></div>`).join('');
+
+  // ── reservations ────────────────────────────────────────
+  const res = { party: 2, date: null, time: null };
+  $('#party').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map(n => `<button data-party="${n}" aria-pressed="${n === 2}">${n}</button>`).join('');
+
+  const dates = [];
+  for (let i = 0; dates.length < 14; i++) {
+    const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + i);
+    const hrs = HOURS[d.getDay()], nowH = new Date().getHours() + new Date().getMinutes() / 60;
+    if (hrs && !(i === 0 && nowH >= hrs[1] - 2.5)) dates.push(d);
+  }
+  $('#r-date').innerHTML = dates.map((d, i) => `<option value="${dayKey(d)}">${i === 0 && d.toDateString() === new Date().toDateString() ? 'Today' : d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</option>`).join('');
+  res.date = $('#r-date').value;
+
+  function taken(key) {
+    let h = 7; for (const c of key) h = (h * 33 + c.charCodeAt(0)) >>> 0;
+    return h % 100 < 35;
+  }
+  function renderTimes() {
+    const d = new Date(res.date + 'T00:00'), hrs = HOURS[d.getDay()], isToday = d.toDateString() === new Date().toDateString();
+    const nowH = new Date().getHours() + new Date().getMinutes() / 60;
+    let html = '';
+    for (let h = hrs[0]; h <= hrs[1] - 1.5; h += 0.5) {
+      const off = (isToday && h <= nowH + 1) || taken(res.date + res.party + h + $('#r-seat').value);
+      html += `<button data-time="${h}" ${off ? 'disabled' : ''} aria-pressed="${res.time === String(h)}">${fmt(h)}</button>`;
+    }
+    $('#times').innerHTML = html || '<span style="color:var(--muted)">Fully booked. Try another day.</span>';
+  }
+  function check() { $('#r-go').disabled = !(res.time && $('#r-name').value.trim() && $('#r-phone').value.trim()); }
+
+  document.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.party) { res.party = +b.dataset.party; res.time = null; document.querySelectorAll('[data-party]').forEach(x => x.setAttribute('aria-pressed', x === b)); renderTimes(); check(); }
+    if (b.dataset.time) { res.time = b.dataset.time; renderTimes(); check(); }
+  });
+  $('#r-date').addEventListener('change', e => { res.date = e.target.value; res.time = null; renderTimes(); check(); });
+  $('#r-seat').addEventListener('change', () => { res.time = null; renderTimes(); check(); });
+  ['#r-name', '#r-phone'].forEach(s => $(s).addEventListener('input', check));
+  $('#r-go').addEventListener('click', () => {
+    const d = new Date(res.date + 'T00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    $('#r-confirm').textContent = `Table for ${res.party}, ${d} at ${fmt(+res.time)} in the ${$('#r-seat').value.split(' (')[0].toLowerCase()}. A confirmation text is on its way, ${$('#r-name').value.trim().split(' ')[0]}.`;
+    $('#rbox').classList.add('booked');
+  });
+  $('#r-again').addEventListener('click', () => {
+    res.time = null; $('#r-name').value = ''; $('#r-phone').value = '';
+    $('#rbox').classList.remove('booked'); renderTimes(); check();
+  });
+  renderTimes();
+</script>
+</body>
+</html>
