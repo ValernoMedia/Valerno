@@ -1,526 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABmElEQVR4nGPk5eFioCVgoqnpoxaMWkAVwILGFxVgmZYrgyZ44e731mUv4dxoZ8EAK34I+97zX+VznuGxgBFrRot1EfSzhBqx8sCHNYc/oClgZ2WcXSQ7f+e7/Re+4PcB9iDacx6hzcmAhxFDgbUON8N/hmNXv+I3HacFz9/+vvboB4QtKsCiq8SJpsDFkPfI1a8/f/8n0wIGBoa95xCecDbkQZaSE2NTlWbfc+4zQdPxWXD8+tevP/5B2GbqXLycCJXOhjwPXvy69/wXRRb8/vP/8GWoJ1iYGe31oJ5gZWa00+XZc54o5+OzgAEtqg15IQxzTS42VsbDlwlHL2ELHr78defZTwhbVpRVTZqdgYHBxYj3+LWv337+o4IFDAwMe88jRzWvhBCrljzHnnME0j4JFhy58vXHL6hjrbS5fMz5nr35fePxD6pZ8OPXv2NXv0HYHGxM7ia8e4mOXqIsYGBgQDbxz9//By8RG73EWnDr6c9Hr6BJ/vTNb5++/aWyBQxIUY0c50QC7KUpFcHQr9FGLRi1gHIAALk3izUD8gfkAAAAAElFTkSuQmCC"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Client Onboarding — Valerno Media</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ede6d8;
-    --surface: #f5ede0;
-    --surface2: #ede5d5;
-    --gold: #b8892a;
-    --gold2: #d4a93e;
-    --cream: #1a1612;
-    --muted: #8a7d6e;
-    --border: #d4c9b8;
-    --border2: #c4b8a5;
-    --input-bg: #ffffff;
+    --bg: #0f0e0c;
+    --bg-2: #15130f;
+    --card: #1c1a16;
+    --line: rgba(240, 235, 226, 0.1);
+    --line-2: rgba(240, 235, 226, 0.18);
+    --text: #f0ebe2;
+    --soft: #c9c0b3;
+    --muted: #9a8f82;
+    --gold: #c79a3e;
+    --gold-hi: #dcb767;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'DM Mono', ui-monospace, monospace;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--cream); font-family: 'Outfit', sans-serif; padding-bottom: 100px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-  /* HEADER */
-  header {
-    padding: 28px 60px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-    position: sticky; top: 0; z-index: 10;
-    backdrop-filter: blur(20px);
-  }
-  .logo { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; color: var(--dark, #1a1612); text-decoration: none; }
+  nav { border-bottom: 1px solid var(--line); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: var(--serif); font-size: 28px; font-weight: 500; text-decoration: none; }
   .logo span { color: var(--gold); }
-  .header-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .back { font-size: 14px; color: var(--soft); text-decoration: none; }
+  .back:hover { color: var(--gold-hi); }
 
-  /* HERO */
-  .hero {
-    padding: 80px 60px 60px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    background: #ede5d5;
-  }
-  .hero-tag { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 12px; }
-  .hero-tag::before, .hero-tag::after { content: ''; width: 32px; height: 1px; background: var(--gold); }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; color: var(--cream); margin-bottom: 16px; }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero p { font-size: 15px; color: var(--muted); font-weight: 300; max-width: 440px; margin: 0 auto; line-height: 1.9; }
+  header.wrap { padding-top: 72px; padding-bottom: 40px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 7vw, 68px); line-height: 1; margin-top: 18px; letter-spacing: -0.01em; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--gold-hi); }
+  .lede { color: var(--soft); font-size: 18px; margin-top: 22px; max-width: 560px; }
 
-  /* PROGRESS BAR */
-  .progress-wrap { max-width: 720px; margin: 32px auto 0; padding: 0 24px; }
-  .progress-steps { display: flex; align-items: center; gap: 0; }
-  .progress-step { flex: 1; text-align: center; position: relative; }
-  .progress-step::after { content: ''; position: absolute; top: 12px; left: 50%; width: 100%; height: 1px; background: var(--border2); z-index: 0; }
-  .progress-step:last-child::after { display: none; }
-  .step-dot { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border2); background: var(--surface); font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); display: flex; align-items: center; justify-content: center; margin: 0 auto 6px; position: relative; z-index: 1; transition: all .3s; }
-  .step-dot.active { border-color: var(--gold); color: var(--gold); background: var(--bg); }
-  .step-dot.done { border-color: var(--gold); background: var(--gold); color: #000; }
-  .step-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
-  .step-label.active { color: var(--gold); }
+  form { padding-bottom: 120px; }
+  fieldset { border: 1px solid var(--line-2); border-radius: 20px; background: var(--bg-2); padding: 36px; margin-bottom: 18px; }
+  legend { display: contents; }
+  .sec-n { font-family: var(--mono); font-size: 12px; color: var(--gold); letter-spacing: 0.1em; }
+  .sec-t { font-family: var(--serif); font-weight: 500; font-size: 32px; line-height: 1.1; margin: 6px 0 26px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+  .full { grid-column: 1 / -1; }
+  label.f { display: block; font-size: 14px; color: var(--soft); margin-bottom: 8px; font-weight: 400; }
+  label.f .req { color: var(--gold); }
+  .hint { font-size: 13px; color: var(--muted); margin-top: 7px; }
+  input[type=text], input[type=email], input[type=tel], input[type=url], textarea {
+    width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line-2); border-radius: 12px;
+    padding: 13px 15px; font: inherit; font-size: 16px; font-weight: 300; transition: border-color .2s, box-shadow .2s; }
+  textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+  input::placeholder, textarea::placeholder { color: #6d655a; }
+  input:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(199,154,62,0.18); }
+  input:user-invalid, textarea:user-invalid { border-color: #c0573f; }
 
-  /* FORM WRAP */
-  .form-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips label { cursor: pointer; }
+  .chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .chips span { display: inline-block; padding: 9px 16px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 14px; color: var(--soft); transition: all .2s; user-select: none; }
+  .chips label:hover span { border-color: var(--gold); color: var(--text); }
+  .chips input:checked + span { background: var(--text); border-color: var(--text); color: #14110b; font-weight: 500; }
+  .chips input:focus-visible + span { box-shadow: 0 0 0 3px rgba(199,154,62,0.35); }
 
-  /* CARD */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 40px;
-    margin-top: 20px;
-    transition: border-color .2s;
-  }
-  .card:focus-within { border-color: var(--border2); }
-  .card-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
-  .card-left { }
-  .card-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: #1a1612; margin-bottom: 4px; }
-  .card-sub { font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.6; max-width: 460px; }
+  [data-for] { display: none; }
+  form[data-type=""] [data-for=""],
+  form[data-type="Barbershop"] [data-for~="Barbershop"],
+  form[data-type="Restaurant"] [data-for~="Restaurant"],
+  form[data-type="Other"] [data-for~="Other"] { display: revert; }
 
-  /* FIELDS */
-  .fg { margin-bottom: 18px; }
-  .fg:last-child { margin-bottom: 0; }
-  .fg label { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .fg label .req { color: var(--gold); margin-left: 2px; }
-  .fg input, .fg select, .fg textarea {
-    width: 100%; padding: 13px 16px;
-    background: var(--input-bg);
-    border: 1px solid var(--border);
-    font-family: 'Outfit', sans-serif; font-size: 14px;
-    color: #1a1612; outline: none; border-radius: 2px;
-    transition: border-color .2s; appearance: none;
-  }
-  .fg textarea { height: 100px; resize: vertical; }
-  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
-  .fg input::placeholder, .fg textarea::placeholder { color: #c5bdb2; }
-  .fg select option { background: #fff; color: #1a1612; }
-  .hint { font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 300; font-family: 'Outfit', sans-serif; }
+  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .submit-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 30px; }
+  button.submit { font: inherit; font-weight: 500; font-size: 16px; background: var(--gold); color: #14110b; border: 0; border-radius: 999px; padding: 16px 30px; cursor: pointer; transition: background .2s, transform .2s; }
+  button.submit:hover { background: var(--gold-hi); transform: translateY(-1px); }
+  button.submit:disabled { opacity: .6; cursor: default; transform: none; }
+  .submit-note { font-size: 13px; color: var(--muted); }
+  .error { color: #e08a6e; font-size: 14px; margin-top: 14px; display: none; }
 
-  /* CHECKBOX GROUP */
-  .check-group { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; background: white; }
-  .check-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 14px 16px;
-    background: #ffffff;
-    cursor: pointer;
-    transition: background .15s;
-    border-bottom: 1px solid var(--border);
-  }
-  .check-item:last-child { border-bottom: none; }
-  .check-item:hover { background: #ede7da; }
-  .check-item input[type="checkbox"] {
-    width: 16px; height: 16px; flex-shrink: 0;
-    accent-color: var(--gold); cursor: pointer;
-    background: var(--input-bg); border: 1px solid var(--border);
-    border-radius: 2px;
-  }
-  .check-item span { font-size: 14px; color: var(--cream); font-weight: 300; }
-  .check-item .check-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .check-content { display: flex; flex-direction: column; }
+  .done.wrap { display: none; text-align: center; padding-top: 80px; padding-bottom: 140px; }
+  .done .ring { width: 72px; height: 72px; border-radius: 50%; border: 1.5px solid var(--gold); display: grid; place-items: center; margin: 0 auto 30px; color: var(--gold-hi); font-size: 30px; }
+  .done h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 6vw, 58px); line-height: 1.05; }
+  .done h2 em { font-style: italic; color: var(--gold-hi); font-weight: 400; }
+  .done p { color: var(--soft); font-size: 18px; max-width: 520px; margin: 20px auto 0; }
+  .done a { display: inline-block; margin-top: 34px; color: var(--gold-hi); text-decoration: none; border-bottom: 1px solid rgba(220,183,103,0.4); }
+  body.sent form, body.sent header { display: none; }
+  body.sent .done.wrap { display: block; }
 
-  /* HIGHLIGHT BOX */
-  .highlight-box {
-    background: #f5e9c8;
-    border: 1px solid rgba(184,137,42,0.4);
-    border-radius: 2px;
-    padding: 16px 20px;
-    margin-top: 12px;
-    display: flex; align-items: flex-start; gap: 12px;
-  }
-  .highlight-box .hb-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .highlight-box p { font-size: 13px; color: #8a6518; font-weight: 300; line-height: 1.6; }
+  footer { border-top: 1px solid var(--line); padding: 32px 0; font-size: 13px; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .foot em { font-family: var(--serif); font-size: 16px; color: var(--soft); }
 
-  /* SUBMIT */
-  .submit-wrap { margin-top: 28px; }
-  .submit {
-    width: 100%; padding: 18px;
-    background: var(--gold); color: #000;
-    border: none; font-family: 'Outfit', sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px;
-    text-transform: uppercase; cursor: pointer; border-radius: 2px;
-    transition: background .2s;
-  }
-  .submit:hover { background: var(--gold2); }
-
-  /* SUCCESS */
-  .success-screen {
-    display: none;
-    text-align: center; padding: 80px 24px;
-  }
-  .success-circle {
-    width: 72px; height: 72px; border-radius: 50%;
-    border: 1px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 28px; font-size: 28px; color: var(--gold);
-  }
-  .success-screen h2 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; color: #1a1612; margin-bottom: 12px; }
-  .success-screen h2 em { font-style: italic; color: var(--gold); }
-  .success-screen p { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.8; max-width: 380px; margin: 0 auto 36px; }
-  .back-btn { display: inline-block; border: 1px solid var(--border); color: var(--muted); padding: 14px 32px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .2s; }
-  .back-btn:hover { border-color: var(--gold); color: var(--gold); }
-
-  @media(max-width: 600px) {
-    header { padding: 18px 20px; }
-    .hero { padding: 48px 20px 40px; }
-    .card { padding: 24px 20px; }
-    .row { grid-template-columns: 1fr; }
-    .progress-wrap { display: none; }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    header.wrap { padding-top: 48px; padding-bottom: 32px; }
+    fieldset { padding: 26px 20px; }
+    .grid { grid-template-columns: 1fr; }
+    .sec-t { font-size: 28px; }
+    button.submit { width: 100%; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<nav><div class="wrap nav-in">
   <a href="index.html" class="logo">Valerno<span>.</span></a>
-  <div class="header-tag">Client Onboarding</div>
+  <a href="index.html" class="back">← Back to site</a>
+</div></nav>
+
+<header class="wrap">
+  <span class="eyebrow">New client setup</span>
+  <h1>Let's build <em>your site.</em></h1>
+  <p class="lede">A few questions so we can get your website and booking right the first time. Takes about five minutes. Skip anything you're not sure about and we'll sort it out together.</p>
 </header>
 
-<div class="hero">
-  <div class="hero-tag">New Client Setup</div>
-  <h1>Welcome to<br><em>Valerno Media.</em></h1>
-  <p>Fill out this short form so we can tailor your content strategy. Takes about 5 minutes.</p>
-  <div class="progress-wrap" id="progress-wrap">
-    <div class="progress-steps">
-      <div class="progress-step"><div class="step-dot active" id="dot-0">01</div><div class="step-label active">Business</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-1">02</div><div class="step-label">Services</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-2">03</div><div class="step-label">Social</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-3">04</div><div class="step-label">Email</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-4">05</div><div class="step-label">Google</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-5">06</div><div class="step-label">Photos</div></div>
-      <div class="progress-step"><div class="step-dot" id="dot-6">07</div><div class="step-label">Final</div></div>
+<form id="onboard" class="wrap" data-type="" novalidate>
+  <div class="trap" aria-hidden="true"><label>Company fax <input type="text" name="company_fax" tabindex="-1" autocomplete="off"></label></div>
+
+  <fieldset>
+    <legend><span class="sec-n">01</span><h2 class="sec-t">The basics</h2></legend>
+    <div class="grid">
+      <div><label class="f" for="business_name">Business name <span class="req">*</span></label><input type="text" id="business_name" name="business_name" required autocomplete="organization"></div>
+      <div><label class="f" for="owner_name">Your name <span class="req">*</span></label><input type="text" id="owner_name" name="owner_name" required autocomplete="name"></div>
+      <div><label class="f" for="phone">Phone <span class="req">*</span></label><input type="tel" id="phone" name="phone" required autocomplete="tel"></div>
+      <div><label class="f" for="email">Email <span class="req">*</span></label><input type="email" id="email" name="email" required autocomplete="email"></div>
+      <div class="full"><label class="f" for="address">Address</label><input type="text" id="address" name="address" autocomplete="street-address" placeholder="Street, city"></div>
+      <div class="full">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">What kind of business? <span style="color:var(--gold)">*</span></span>
+        <div class="chips" role="radiogroup">
+          <label><input type="radio" name="business_type" value="Barbershop" required><span>Barbershop</span></label>
+          <label><input type="radio" name="business_type" value="Restaurant"><span>Restaurant</span></label>
+          <label><input type="radio" name="business_type" value="Other"><span>Something else</span></label>
+        </div>
+      </div>
+      <div><label class="f" for="current_website">Current website</label><input type="text" id="current_website" name="current_website" placeholder="If you have one"></div>
+      <div><label class="f" for="social">Instagram or Facebook</label><input type="text" id="social" name="social" placeholder="@yourshop"></div>
     </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="sec-n">02</span><h2 class="sec-t">What you offer</h2></legend>
+    <div class="grid">
+      <div class="full">
+        <label class="f" for="services">
+          <span data-for="Barbershop">Services, prices and how long each takes <span class="req">*</span></span>
+          <span data-for="Restaurant">Your menu <span class="req">*</span></span>
+          <span data-for="Other">Your services and prices <span class="req">*</span></span>
+          <span data-for="">Your services and prices <span class="req">*</span></span>
+        </label>
+        <textarea id="services" name="services" required placeholder="Haircut, $30, 30 min&#10;Cut + beard, $40, 45 min&#10;Kids cut, $20, 20 min"></textarea>
+        <p class="hint" data-for="Restaurant">Paste it in, or link to a photo or PDF of your current menu.</p>
+      </div>
+      <div class="full"><label class="f" for="hours">Hours <span class="req">*</span></label><input type="text" id="hours" name="hours" required placeholder="Tue–Fri 10–7, Sat 9–5, closed Sun–Mon"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="sec-n">03</span><h2 class="sec-t" id="booking-title">Booking</h2></legend>
+    <div class="grid">
+      <div class="full">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">
+          <span data-for="Barbershop Other">Do you use a booking app right now?</span>
+          <span data-for="Restaurant">Do you take reservations or online orders right now?</span>
+          <span data-for="">Do you use a booking app right now?</span>
+        </span>
+        <div class="chips">
+          <label><input type="radio" name="booking_app" value="None"><span>Nothing yet</span></label>
+          <label data-for="Barbershop Other"><input type="radio" name="booking_app" value="Booksy"><span>Booksy</span></label>
+          <label data-for="Barbershop Other"><input type="radio" name="booking_app" value="Square"><span>Square</span></label>
+          <label data-for="Barbershop"><input type="radio" name="booking_app" value="Squire"><span>Squire</span></label>
+          <label data-for="Barbershop Other"><input type="radio" name="booking_app" value="Vagaro"><span>Vagaro</span></label>
+          <label data-for="Restaurant"><input type="radio" name="booking_app" value="OpenTable"><span>OpenTable</span></label>
+          <label data-for="Restaurant"><input type="radio" name="booking_app" value="Resy"><span>Resy</span></label>
+          <label data-for="Restaurant"><input type="radio" name="booking_app" value="Toast"><span>Toast</span></label>
+          <label><input type="radio" name="booking_app" value="Phone only"><span>Phone only</span></label>
+          <label><input type="radio" name="booking_app" value="Other"><span>Something else</span></label>
+        </div>
+      </div>
+      <div class="full"><label class="f" for="booking_notes">Anything we should know about how you book?</label><textarea id="booking_notes" name="booking_notes" style="min-height:90px" placeholder="Each barber has their own schedule, no bookings after 6pm, etc."></textarea></div>
+      <div data-for="Barbershop">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">Take a deposit to cut down no-shows?</span>
+        <div class="chips">
+          <label><input type="radio" name="deposits" value="Yes"><span>Yes</span></label>
+          <label><input type="radio" name="deposits" value="No"><span>No</span></label>
+          <label><input type="radio" name="deposits" value="Not sure"><span>Not sure</span></label>
+        </div>
+      </div>
+      <div data-for="Barbershop">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">Walk-ins?</span>
+        <div class="chips">
+          <label><input type="radio" name="walk_ins" value="Appointments only"><span>Appointments only</span></label>
+          <label><input type="radio" name="walk_ins" value="Both"><span>Both</span></label>
+          <label><input type="radio" name="walk_ins" value="Mostly walk-ins"><span>Mostly walk-ins</span></label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="sec-n">04</span><h2 class="sec-t">Look and feel</h2></legend>
+    <div class="grid">
+      <div class="full">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">Real photos make the site. How do you want to send them?</span>
+        <div class="chips">
+          <label><input type="radio" name="photos" value="Text them"><span>Text them</span></label>
+          <label><input type="radio" name="photos" value="Email"><span>Email</span></label>
+          <label><input type="radio" name="photos" value="Use our Instagram"><span>Use our Instagram</span></label>
+          <label><input type="radio" name="photos" value="Come take some"><span>Come take some</span></label>
+        </div>
+      </div>
+      <div class="full"><label class="f" for="vibe">Colors or vibe you want</label><input type="text" id="vibe" name="vibe" placeholder="Black and gold, old-school, clean and modern..."></div>
+      <div class="full"><label class="f" for="sites_you_like">Any websites you like the look of?</label><input type="text" id="sites_you_like" name="sites_you_like" placeholder="Links or names"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="sec-n">05</span><h2 class="sec-t">Last few things</h2></legend>
+    <div class="grid">
+      <div class="full">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">Do you own a web address (like yourshop.com)?</span>
+        <div class="chips">
+          <label><input type="radio" name="domain" value="Yes"><span>Yes</span></label>
+          <label><input type="radio" name="domain" value="No"><span>No</span></label>
+          <label><input type="radio" name="domain" value="Not sure"><span>Not sure</span></label>
+        </div>
+      </div>
+      <div class="full">
+        <span class="f" style="display:block;font-size:14px;color:var(--soft);margin-bottom:8px">Do you have a Google Business Profile (your listing on Google Maps)?</span>
+        <div class="chips">
+          <label><input type="radio" name="google_profile" value="Yes"><span>Yes</span></label>
+          <label><input type="radio" name="google_profile" value="No"><span>No</span></label>
+          <label><input type="radio" name="google_profile" value="Not sure"><span>Not sure</span></label>
+        </div>
+      </div>
+      <div class="full"><label class="f" for="anything_else">Anything else?</label><textarea id="anything_else" name="anything_else" style="min-height:90px" placeholder="Goals, competitors you watch, anything we should know"></textarea></div>
+    </div>
+  </fieldset>
+
+  <div class="submit-row">
+    <button type="submit" class="submit" id="submit-btn">Send it over →</button>
+    <span class="submit-note">Goes straight to Noah and Josh.</span>
   </div>
-</div>
+  <p class="error" id="form-error"></p>
+</form>
 
-<div class="form-wrap">
+<section class="done wrap" aria-live="polite">
+  <div class="ring">✓</div>
+  <h2>Got it. <em>We're on it.</em></h2>
+  <p>We'll reach out within a day to grab photos and anything we still need. Your first draft comes in about a week.</p>
+  <a href="index.html">Back to the site</a>
+</section>
 
-  <div id="form-section">
-  <form id="onboarding-form" name="onboarding" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
-    <input type="hidden" name="form-name" value="onboarding"/>
-    <p style="display:none;"><input name="bot-field"/></p>
-
-    <!-- 01 BUSINESS INFO -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">01 — Business Info</div>
-          <div class="card-title">The Basics</div>
-          <div class="card-sub">Your business details so we can personalize every piece of content.</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="fg"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" placeholder="Smith Plumbing LLC" required/></div>
-        <div class="fg"><label>Owner Name <span class="req">*</span></label><input type="text" name="owner_name" placeholder="Mike Smith" required/></div>
-      </div>
-      <div class="row">
-        <div class="fg"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="(585) 000-0000" required/></div>
-        <div class="fg"><label>Email Address <span class="req">*</span></label><input type="email" name="email" placeholder="mike@smithplumbing.com" required/></div>
-      </div>
-      <div class="fg"><label>Website URL</label><input type="text" name="website" placeholder="www.smithplumbing.com"/></div>
-      <div class="fg"><label>Cities & Areas You Serve <span class="req">*</span></label><input type="text" name="service_area" placeholder="Rochester, Brighton, Pittsford, Greece" required/></div>
-    </div>
-
-    <!-- 02 SERVICES -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">02 — Services</div>
-          <div class="card-title">What You Do</div>
-          <div class="card-sub">Tell us exactly what you offer so we can write about it accurately and compellingly.</div>
-        </div>
-      </div>
-      <div class="fg"><label>Main Services You Offer <span class="req">*</span></label><textarea name="services" placeholder="e.g. Drain cleaning, water heater installation, emergency plumbing, pipe repairs, sump pumps..." required></textarea></div>
-      <div class="fg"><label>Services to Promote This Month</label><input type="text" name="promote_services" placeholder="e.g. Water heater installs — we have a 10% off special running"/></div>
-      <div class="fg"><label>Current Promotions or Seasonal Offers</label><input type="text" name="promotions" placeholder="e.g. 10% off water heater installs this month"/></div>
-      <div class="fg"><label>Services You Do NOT Want Us to Mention</label><input type="text" name="exclude_services" placeholder="e.g. We don't do commercial work"/></div>
-    </div>
-
-    <!-- 03 SOCIAL MEDIA -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">03 — Social Media</div>
-          <div class="card-title">Your Platforms</div>
-          <div class="card-sub">Select every platform you want content for. We'll tailor each post to fit.</div>
-        </div>
-      </div>
-
-      <div class="fg">
-        <label style="font-family:'Outfit',sans-serif; font-size:14px; font-weight:500; letter-spacing:0; text-transform:none; color:#1a1612; margin-bottom:12px;">Which platforms are you on? Check all that apply:</label>
-
-        <div style="display:flex; flex-direction:column; gap:8px;">
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_facebook" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">Facebook</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">Best for local community engagement and promotions</div>
-            </div>
-          </label>
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_instagram" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">Instagram</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">Great for before/after photos and job highlights</div>
-            </div>
-          </label>
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_nextdoor" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">Nextdoor</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">Highly effective for local neighborhood reach</div>
-            </div>
-          </label>
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_linkedin" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">LinkedIn</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">Good for commercial clients and B2B referrals</div>
-            </div>
-          </label>
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_tiktok" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">TikTok</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">Short-form video content for wider reach</div>
-            </div>
-          </label>
-
-          <label style="display:flex; align-items:center; gap:12px; background:#faf6ee; border:2px solid #d4c9b8; border-radius:4px; padding:14px 16px; cursor:pointer; transition:all .15s;" class="check-label">
-            <input type="checkbox" name="platform_none" value="Yes" style="width:18px;height:18px;accent-color:#b8892a;cursor:pointer;flex-shrink:0;" onchange="toggleCheck(this)"/>
-            <div>
-              <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;color:#1a1612;">None yet — starting from scratch</div>
-              <div style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a7d6e;font-weight:300;margin-top:2px;">We'll help you decide where to start</div>
-            </div>
-          </label>
-
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:18px;">
-        <div class="fg"><label>Facebook Page URL</label><input type="text" name="facebook_url" placeholder="facebook.com/SmithPlumbing"/></div>
-        <div class="fg"><label>Instagram Handle</label><input type="text" name="instagram_handle" placeholder="@smithplumbing"/></div>
-      </div>
-
-      <div class="fg">
-        <label>Would you like us to handle all posting for you?</label>
-        <select name="posting_addon">
-          <option value="">Select...</option>
-          <option value="No - I will post myself">No — I'll handle posting myself</option>
-          <option value="Yes - Add posting for $200/mo">Yes — Valerno Media posts everything for me (+$200/mo)</option>
-        </select>
-        <div class="highlight-box">
-          <div class="hb-icon">💡</div>
-          <p>With the posting add-on, we log into your accounts and schedule everything for you. You don't lift a finger. Most clients on the Growth and Pro plans add this on.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 04 EMAIL NEWSLETTER -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">04 — Email Newsletter</div>
-          <div class="card-title">Your Customer List</div>
-          <div class="card-sub">For Growth and Pro plan clients. We write a monthly email to keep past customers coming back.</div>
-        </div>
-      </div>
-      <div class="fg">
-        <label>Do you have an existing customer email list?</label>
-        <select name="email_list">
-          <option value="">Select...</option>
-          <option>Yes — I have an existing list</option>
-          <option>No — I don't have one yet</option>
-        </select>
-      </div>
-      <div class="row">
-        <div class="fg"><label>Email Platform</label><input type="text" name="email_platform" placeholder="e.g. Mailchimp, Constant Contact"/></div>
-        <div class="fg"><label>Approximate List Size</label><input type="text" name="list_size" placeholder="e.g. ~200 past customers"/></div>
-      </div>
-    </div>
-
-    <!-- 05 GOOGLE -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">05 — Google Access</div>
-          <div class="card-title">Google Setup</div>
-          <div class="card-sub">We need access to track your results and post directly to your Google Business Profile.</div>
-        </div>
-      </div>
-      <div class="fg">
-        <label>Do you have a Google Business Profile?</label>
-        <select name="google_business">
-          <option value="">Select...</option>
-          <option>Yes — I have one</option>
-          <option>No — I don't have one</option>
-          <option>Not sure</option>
-        </select>
-        <div class="hint">After submitting we'll send you instructions to add us as a manager so we can post directly to your profile.</div>
-      </div>
-      <div class="fg">
-        <label>Do you have Google Search Console set up?</label>
-        <select name="search_console">
-          <option value="">Select...</option>
-          <option>Yes</option>
-          <option>No</option>
-          <option>Not sure what that is</option>
-        </select>
-        <div class="hint">This is how we track how many times your business appears on Google each month and include it in your performance report.</div>
-      </div>
-    </div>
-
-    <!-- 06 PHOTOS -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">06 — Photos & Brand</div>
-          <div class="card-title">Photos & Tone</div>
-          <div class="card-sub">Real job photos make your content perform 3-5x better. The more you send us, the better your posts look.</div>
-        </div>
-      </div>
-      <div class="fg">
-        <label>Do you have existing photos of your work or team?</label>
-        <select name="has_photos">
-          <option value="">Select...</option>
-          <option>Yes — I'll send some over</option>
-          <option>A few — I'll send what I have</option>
-          <option>No — starting from scratch</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Best way for you to send photos going forward?</label>
-        <select name="photo_method">
-          <option value="">Select...</option>
-          <option>Text to your number</option>
-          <option>Email</option>
-          <option>Drop in Google Drive folder</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>How would you describe your brand tone?</label>
-        <select name="brand_tone">
-          <option value="">Select...</option>
-          <option>Friendly and approachable</option>
-          <option>Professional and formal</option>
-          <option>No-nonsense and direct</option>
-          <option>Community-focused and local</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- 07 FINAL -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-left">
-          <div class="card-num">07 — Final Details</div>
-          <div class="card-title">Anything Else?</div>
-          <div class="card-sub">Goals, competitors, or anything else we should know before we get started.</div>
-        </div>
-      </div>
-      <div class="fg"><label>Main Competitors in Your Area</label><input type="text" name="competitors" placeholder="e.g. Joe's Plumbing, Rochester Rooter"/></div>
-      <div class="fg">
-        <label>Your #1 Goal with Valerno Media</label>
-        <select name="goal">
-          <option value="">Select...</option>
-          <option>Get more inbound calls from Google</option>
-          <option>Stay top of mind with past customers</option>
-          <option>Build a social media presence from scratch</option>
-          <option>All of the above</option>
-        </select>
-      </div>
-      <div class="fg"><label>Anything Else We Should Know</label><textarea name="notes" placeholder="Special requests, things to avoid, anything about your business we should understand..."></textarea></div>
-    </div>
-
-    <div class="submit-wrap">
-      <button type="submit" class="submit">Submit Onboarding Form →</button>
-    </div>
-
-  </form>
-  </div>
-
-  <!-- SUCCESS -->
-  <div class="success-screen" id="success-screen">
-    <div class="success-circle">✓</div>
-    <h2>You're all <em>set.</em></h2>
-    <p>We've received everything we need. Expect your first batch of content within the week — we'll reach out if we have any questions.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="index.html" class="back-btn">← Back to Site</a>
-      <a href="booking.html" style="display:inline-block;background:var(--gold);color:#000;padding:14px 32px;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:2px;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#a07820'" onmouseout="this.style.background='var(--gold)'">Book Your Kickoff Call →</a>
-    </div>
-  </div>
-
-</div>
+<footer><div class="wrap foot">
+  <em>To rise. To prevail.</em>
+  <span>© 2026 Valerno Media · Richmond, VA</span>
+</div></footer>
 
 <script>
-  function toggleCheck(input) {
-    const label = input.closest('label');
-    if (input.checked) {
-      label.style.background = '#b8892a';
-      label.style.borderColor = '#b8892a';
-      label.querySelectorAll('div').forEach(d => {
-        d.style.color = '#fff';
-      });
-    } else {
-      label.style.background = '#faf6ee';
-      label.style.borderColor = '#d4c9b8';
-      label.querySelectorAll('div').forEach(d => {
-        d.style.color = '';
-      });
+  // Google Apps Script web app URL that saves submissions to the onboarding sheet.
+  // Until it's set, submissions open the client's email app with everything filled in.
+  const SCRIPT_URL = '';
+  const FALLBACK_EMAIL = 'valerno.media@gmail.com';
+
+  const form = document.getElementById('onboard');
+  const err = document.getElementById('form-error');
+  const btn = document.getElementById('submit-btn');
+
+  const SERVICE_EXAMPLES = {
+    Barbershop: 'Haircut, $30, 30 min\nCut + beard, $40, 45 min\nKids cut, $20, 20 min',
+    Restaurant: 'Paste your menu, or a link to it',
+    Other: 'What you offer and what it costs',
+  };
+  form.addEventListener('change', e => {
+    if (e.target.name !== 'business_type') return;
+    form.dataset.type = e.target.value;
+    document.getElementById('services').placeholder = SERVICE_EXAMPLES[e.target.value];
+    const chosen = form.querySelector('input[name="booking_app"]:checked');
+    if (chosen && chosen.closest('[data-for]') && getComputedStyle(chosen.closest('[data-for]')).display === 'none') chosen.checked = false;
+  });
+
+  function collect() {
+    const data = {};
+    new FormData(form).forEach((v, k) => { data[k] = String(v).trim(); });
+    return data;
+  }
+
+  function mailtoFallback(data) {
+    const lines = Object.entries(data).filter(([k, v]) => v && k !== 'company_fax')
+      .map(([k, v]) => k.replace(/_/g, ' ') + ': ' + v);
+    const subject = 'Valerno onboarding: ' + (data.business_name || '');
+    location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.style.display = 'none';
+    if (!form.checkValidity()) {
+      const first = form.querySelector(':invalid');
+      err.textContent = 'A couple of required fields are still empty.';
+      err.style.display = 'block';
+      if (first) first.focus();
+      return;
     }
-  }
+    const data = collect();
+    btn.disabled = true; btn.textContent = 'Sending…';
 
-  // Progress bar
-  const cards = document.querySelectorAll('.card');
-  const dots = Array.from({length: 7}, (_, i) => document.getElementById('dot-' + i));
-  const labels = document.querySelectorAll('.step-label');
-
-  function updateProgress(activeIdx) {
-    dots.forEach((dot, i) => {
-      dot.classList.remove('active', 'done');
-      labels[i].classList.remove('active');
-      if (i < activeIdx) {
-        dot.classList.add('done');
-        dot.textContent = '✓';
-      } else if (i === activeIdx) {
-        dot.classList.add('active');
-        dot.textContent = String(i + 1).padStart(2, '0');
-        labels[i].classList.add('active');
-      } else {
-        dot.textContent = String(i + 1).padStart(2, '0');
-      }
-    });
-  }
-
-  if ('IntersectionObserver' in window) {
-    const cardObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          updateProgress(Array.from(cards).indexOf(entry.target));
-        }
-      });
-    }, { threshold: 0.35, rootMargin: '-5% 0px -45% 0px' });
-    cards.forEach(card => cardObs.observe(card));
-  }
-
-  document.getElementById('onboarding-form').addEventListener('submit', function(e) {
-    // Let Netlify handle the actual submission
-    setTimeout(function() {
-      document.getElementById('form-section').style.display = 'none';
-      document.getElementById('success-screen').style.display = 'block';
-      window.scrollTo(0, 0);
-    }, 500);
+    if (!SCRIPT_URL) {
+      mailtoFallback(data);
+      document.body.classList.add('sent'); window.scrollTo(0, 0);
+      return;
+    }
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+      document.body.classList.add('sent'); window.scrollTo(0, 0);
+    } catch (_) {
+      btn.disabled = false; btn.textContent = 'Send it over →';
+      err.textContent = "That didn't go through. Check your connection and try again, or text us at (215) 509-8118.";
+      err.style.display = 'block';
+    }
   });
 </script>
-
 </body>
 </html>
